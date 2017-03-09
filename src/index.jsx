@@ -11,13 +11,15 @@ class FeedbackPanel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      icon: this.getIcon(props.correctness)
+      icon: this.getIcon(this.props.correctness),
+      feedback: this.props.feedback
     };
   }
 
   componentWillReceiveProps(props) {
     this.setState({
-      icon: this.getIcon(props.correctness)
+      icon: this.getIcon(props.correctness),
+      feedback: this.props.feedback
     })
   }
 
@@ -39,7 +41,7 @@ class FeedbackPanel extends React.Component {
         <div className="icon">
           <this.state.icon iconSet={FeedbackPanel.iconSet} shape="square" />
         </div>
-        {this.props.feedback}
+        <div dangerouslySetInnerHTML={{__html: this.state.feedback}}/>
       </div>
     ) : <div/>;
   }
