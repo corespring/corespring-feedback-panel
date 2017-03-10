@@ -43,7 +43,7 @@ class FeedbackPanel extends React.Component {
         <div className="icon">
           <this.state.icon iconSet={FeedbackPanel.iconSet} shape="square" />
         </div>
-        <div dangerouslySetInnerHTML={{__html: this.state.feedback}}/>
+        <div dangerouslySetInnerHTML={{__html: `<div>${this.state.feedback}</div>`}}/>
       </div>
     ) : <div/>;
   }
