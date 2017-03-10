@@ -1,5 +1,7 @@
 import React from 'react';
 
+import _ from 'lodash';
+
 import CorrectIcon from 'corespring-icon/correct-icon.jsx';
 import PartiallyCorrectIcon from 'corespring-icon/partially-correct-icon.jsx';
 import IncorrectIcon from 'corespring-icon/incorrect-icon.jsx';
@@ -36,7 +38,7 @@ class FeedbackPanel extends React.Component {
   
 
   render() {
-    return (this.props.feedback !== undefined) ? (
+    return (!_.isEmpty(this.props.feedback)) ? (
       <div className="feedback-panel">
         <div className="icon">
           <this.state.icon iconSet={FeedbackPanel.iconSet} shape="square" />
