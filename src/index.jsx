@@ -5,6 +5,8 @@ import _ from 'lodash';
 import CorrectIcon from 'corespring-icon/correct-icon.jsx';
 import PartiallyCorrectIcon from 'corespring-icon/partially-correct-icon.jsx';
 import IncorrectIcon from 'corespring-icon/incorrect-icon.jsx';
+import NothingSubmittedIcon from 'corespring-icon/nothing-submitted-icon.jsx';
+
 
 require('./index.less');
 
@@ -32,6 +34,8 @@ class FeedbackPanel extends React.Component {
         return CorrectIcon;
       case 'incorrect':
         return IncorrectIcon;
+      case 'warning':
+        return NothingSubmittedIcon;
       default:
         return PartiallyCorrectIcon;
     }
@@ -41,7 +45,7 @@ class FeedbackPanel extends React.Component {
   render() {
     return (!_.isEmpty(this.state.feedback)) ? (
       <div className="feedback-panel">
-        <div className="icon">
+        <div className={`icon ${correctness}`}>
           <this.state.icon iconSet={FeedbackPanel.iconSet} shape="square" />
         </div>
         <div dangerouslySetInnerHTML={{__html: this.state.feedback}}/>
