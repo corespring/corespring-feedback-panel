@@ -16,6 +16,7 @@ class FeedbackPanel extends React.Component {
     super(props);
     this.state = {
       icon: this.getIcon(this.props.correctness),
+      correctness: this.props.correctness,
       feedback: this.props.feedback
     };
   }
@@ -24,6 +25,7 @@ class FeedbackPanel extends React.Component {
     console.log('update feedback');
     this.setState({
       icon: this.getIcon(props.correctness),
+      correctness: props.correctness,
       feedback: props.feedback
     })
   }
@@ -45,7 +47,7 @@ class FeedbackPanel extends React.Component {
   render() {
     return (!_.isEmpty(this.state.feedback)) ? (
       <div className="feedback-panel">
-        <div className={`icon ${correctness}`}>
+        <div className={`icon ${this.state.correctness}`}>
           <this.state.icon iconSet={FeedbackPanel.iconSet} shape="square" />
         </div>
         <div dangerouslySetInnerHTML={{__html: this.state.feedback}}/>
